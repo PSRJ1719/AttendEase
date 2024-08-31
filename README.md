@@ -24,7 +24,7 @@ AttendEase is a web-based student attendance management system that uses Redis d
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/attendease.git
+   git clone https://github.com/PSRJ1719/attendease.git
    cd attendease
    ```
 
