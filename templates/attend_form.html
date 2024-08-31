@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Student Sign-In Form</title>
+            <link rel="stylesheet" href="../static/attend_form.css">
+        </head>
+        <body>
+            <div class="container">
+                <h2>Sign In</h2>
+                <form action="/submit_attend" method="post" class="submit_attend" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <label for="course_id">Student ID</label>
+                        <input type="text" name="student_id" placeholder="Enter Your Student ID" required>
+                    </div>
+    
+                    <div class="submit-group">
+                        <input type="submit" value="Submit" class="submit-btn">
+                    </div>
+                </form>
+            </div>
+
+            {% if message %}
+                <script>
+                    alert("{{ message }}");
+                </script>
+            {% endif %}
+        </body>
+    </html>
+    

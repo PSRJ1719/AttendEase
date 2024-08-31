@@ -1,0 +1,85 @@
+<span style="font-family: verdana, geneva, sans-serif;"><!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>{{course_section}} Student List</title>
+      <link rel="stylesheet" href="../static/main.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+      <script src="https://kit.fontawesome.com/8ad5634d58.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+      <div class="container">
+        <nav>
+          <ul>
+            <li><a href="#" class="logo">
+              <img src="../static/image/bu_logo.png">
+              <span class="nav-item">Admin</span>
+            </a></li>
+            <li><a href="#" data-target="class">
+                <i class="fas fa-layer-group"></i>
+                <span class="nav-item">Class</span>
+              </a></li>
+            <li><a href="#" data-target="student">  <!-- qr code -->
+              <i class="fas fa-solid fa-qrcode"></i>
+              <span class="nav-item">QR code</span>
+            </a></li>
+            <li><a href="#" class="logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="nav-item">Log out</span>
+            </a></li>
+          </ul>
+        </nav>
+
+
+        <section class="main">
+          <div class="main-top">
+            <h1>Easy Attend</h1>
+          </div>
+
+
+          <section class="student">
+            <div class="student-list">
+              <div class="header-container">
+              <h1>{{ course_section }}</h1>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>BU ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Attendence</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for student in array %}
+                    <tr>
+                        <td>{{ student[0] }}</td>
+                        <td>{{ student[1] }}</td>
+                        <td>{{ student[2] }}</td>
+                        <td>{{ student[3] }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+              <div class="back-link">
+                <a href="{{ url_for('manage_dashboard') }}">Back to dashboard</a>
+              </div>
+            </div>
+          </section>
+
+        </section>
+      </div>
+
+    </body>
+    </html>
+    </span>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const students = document.querySelectorAll(".student");
+          students.forEach(student => {
+            student.style.display = "block";
+          });
+        });
+    </script>
