@@ -4,54 +4,50 @@ AttendEase is a web-based student attendance management system that uses Redis d
 
 ## Features
 
-- **User Authentication**: Login system for authenticated access to the dashboard and management functionalities.
-- **Course Management**: Add, update, and delete courses and associated student information.
-- **Attendance Tracking**: Manage student attendance in real-time with checks for class timing constraints.
-- **Student Management**: Easily update student information and monitor their attendance records.
+- **User Authentication**: Secure login system using Passport.js for authenticated access to the dashboard and management functionalities.
+- **Course Management**: Add, update, and delete courses and associated student information via the web interface.
+- **Attendance Tracking**: Manage student attendance in real-time, including class timing checks to ensure students sign in during valid class hours.
+- **Student Management**: Easily update student information and monitor attendance records.
 - **Redis Integration**: Uses Redis for efficient and scalable management of course, student, and attendance data.
 
 ## Technology Stack
 
-- **Python**: Main programming language for backend logic.
-- **Flask**: Web framework used to build the web application.
-- **Redis**: In-memory data structure store used as a database, cache, and message broker.
-- **WTForms**: For creating and validating forms.
-- **Flask-Login**: For managing user sessions and authentication.
-- **Pandas**: Used for handling and processing CSV data.
-- **HTML/CSS/JavaScript**: For the frontend of the application.
+- **JavaScript**: Main programming language for both frontend and backend logic.
+- **Node.js**: Runtime environment used for server-side execution.
+- **Express.js**: Web framework for building the backend application.
+- **Redis**: In-memory data structure store used as a database for courses, students, and attendance records.
+- **Passport.js**: Used for handling user authentication and session management.
+- **Multer**: Middleware for handling file uploads (e.g., CSV files with student data).
+- **EJS**: Template engine for rendering dynamic web pages.
+- **HTML/CSS/JavaScript**: Used for building the frontend of the application.
+- **Pandas (via csv-parser)**: Used for parsing and handling CSV files on the server-side.
 
 ## Installation
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/PSRJ1719/attendease.git
-   cd attendease
-   ```
+### 1. Clone the Repository:
+```bash
+git clone https://github.com/PSRJ1719/attendease.git
+cd attendease
+```
 
-2. **Create a Virtual Environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-   ```
+### 2. Install Required Dependencies:
+```bash
+npm install
+```
 
-3. **Install Required Dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 3. Set Up Redis Connections:
+- Ensure your Redis databases are correctly configured with the required credentials in the `.env` file:
+  - `StudentDB`
+  - `AttendDB`
+  - `CourseDB`
 
-4. **Set Up Redis Connections**:
-   - Ensure your Redis databases are correctly configured with the required credentials in the code:
-     - `StudentDB`
-     - `AttendDB`
-     - `CourseDB`
+### 4. Run the Application:
+```bash
+node app.js
+```
 
-5. **Run the Application**:
-   ```bash
-   python app.py
-   ```
-
-6. **Access the Application**:
-   - Open your web browser and navigate to `http://127.0.0.1:5000`.
+### 5. Access the Application:
+- Open your web browser and navigate to `http://localhost:3000`.
 
 ## Usage
 
@@ -70,23 +66,24 @@ AttendEase is a web-based student attendance management system that uses Redis d
 
 ## Key Functionalities
 
-- **Database Connections**: The application establishes connections with three Redis databases: `StudentDB`, `AttendDB`, and `CourseDB`, each handling specific data types.
+- **Database Connections**: The application connects to three Redis databases: `StudentDB`, `AttendDB`, and `CourseDB`, each handling specific data types like student information, attendance, and course details.
   
-- **Attendance Submission**: Students can submit their attendance only during the specified class hours on designated class days.
+- **Attendance Submission**: Students can submit their attendance only during the specified class hours on designated class days, preventing late or early sign-ins.
 
-- **Student and Course Management**: The administrator can add or update students and courses, ensuring that all student IDs are valid and correctly formatted.
+- **Student and Course Management**: Administrators can add or update student and course details via CSV uploads, ensuring that student IDs are valid and correctly formatted.
 
-- **Logging Out**: Users can log out of the system, which will redirect them back to the sign-in page.
+- **Logout Functionality**: Users can log out of the system, redirecting them to the login page.
 
 ## Error Handling
 
-- **Invalid Inputs**: The application validates user inputs, ensuring all student IDs and dates are correctly formatted before processing.
-- **Redis Connection Failures**: The system handles Redis connection failures gracefully, providing feedback to the user.
+- **Invalid Inputs**: The system checks for valid inputs, such as correctly formatted student IDs and dates, before processing any data.
+- **Redis Connection Failures**: The application gracefully handles Redis connection errors, providing feedback to the user if a connection fails.
+- **Authentication**: Unauthorized users attempting to access protected routes are redirected to the login page.
 
 ## Security Considerations
 
-- **Password Protection**: User passwords are stored in a secure format (in this example, it is hardcoded but should ideally be hashed and stored securely).
-- **Session Management**: The application uses Flask-Login for secure session management and redirects unauthorized users to the sign-in page.
+- **Password Protection**: User passwords are stored securely, and Passport.js is used for authentication and session management.
+- **Session Management**: Sessions are handled securely using Express.js and Passport.js, ensuring that only authenticated users can access sensitive features like attendance tracking and course management.
 
 ## Contact
 
