@@ -1,15 +1,15 @@
-const express = require('express');
-const redis = require('redis');
-const session = require('express-session');
-const RedisStore = require('connect-redis')(session);
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const bodyParser = require('body-parser');
-const multer = require('multer');
-const csv = require('csv-parser');
-const fs = require('fs');
-const path = require('path');
-const dotenv = require('dotenv');
+import express from 'express';
+import { createClient } from 'redis';
+import session from 'express-session';
+import connectRedis from 'connect-redis';
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+import bodyParser from 'body-parser';
+import multer from 'multer';
+import csv from 'csv-parser';
+import fs from 'fs';
+import path from 'path';
+import dotenv from 'dotenv';
 
 // Load environment variables
 dotenv.config();
